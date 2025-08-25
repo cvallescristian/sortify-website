@@ -3,3 +3,4 @@ There are some rules that you need to follow:
 - Prefer use scss.module instead to use style div property.
 - Include a global.scss that should contains standard variables. like colors, font's size and media sizes. 
 - Don't create files more than 100 lines of code. Try to modularize.
+- Try always to follow a design standard. Like button or block pattern. 

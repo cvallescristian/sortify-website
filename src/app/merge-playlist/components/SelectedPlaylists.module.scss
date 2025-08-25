@@ -1,0 +1,117 @@
+.selectedPlaylists {
+  margin-top: var(--spacing-lg);
+}
+
+.selectedTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.totalTracks {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.playlistsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.playlistCard {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+  position: relative;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-surface-hover);
+    transform: translateY(-0.0625rem);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.playlistImage {
+  flex-shrink: 0;
+}
+
+.playlistCover {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.playlistPlaceholder {
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--color-border-light);
+}
+
+.playlistIcon {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-muted);
+}
+
+.playlistDetails {
+  flex: 1;
+}
+
+.playlistName {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-primary);
+}
+
+.playlistOwner {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.playlistTracks {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.removeButton {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-error);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50%;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #c82333;
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

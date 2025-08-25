@@ -20,6 +20,17 @@ interface LogoutResponse {
   error?: string;
 }
 
+interface MergePlaylistsResponse {
+  success: boolean;
+  playlist?: {
+    id: string;
+    name: string;
+    description?: string;
+    external_urls: { spotify: string };
+  };
+  error?: string;
+}
+
 class ApiService {
   private baseUrl: string;
 
@@ -94,6 +105,36 @@ class ApiService {
         playlists: [],
         count: 0,
         error: 'Failed to fetch playlists'
+      };
+    }
+  }
+
+  async mergePlaylists(
+    sessionId: string,
+    playlistIds: string[],
+    name: string,
+    description?: string
+  ): Promise<MergePlaylistsResponse> {
+    try {
+      const response = await fetch(`${this.baseUrl}/playlist/merge`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${sessionId}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          playlistIds,
+          name,
+          description: description || ''
+        })
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error merging playlists:', error);
+      return {
+        success: false,
+        error: 'Failed to merge playlists'
       };
     }
   }

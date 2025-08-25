@@ -1,12 +1,28 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import BaseTemplate from '@/components/base-template/BaseTemplate';
 import styles from './SortOptions.module.scss';
 
 export default function SortOptionsPage() {
+  const router = useRouter();
+
   const handleOptionClick = (option: string) => {
     console.log(`Selected option: ${option}`);
-    alert(`You selected: ${option}`);
+    
+    switch (option) {
+      case 'merge-playlists':
+        router.push('/merge-playlist');
+        break;
+      case 'liked-songs':
+        alert('Liked songs feature coming soon!');
+        break;
+      case 'start-scratch':
+        alert('Start from scratch feature coming soon!');
+        break;
+      default:
+        alert(`You selected: ${option}`);
+    }
   };
 
   return (

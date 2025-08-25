@@ -4,50 +4,96 @@ import { useRouter } from 'next/navigation';
 import BaseTemplate from '@/components/base-template/BaseTemplate';
 import styles from './SortOptions.module.scss';
 
+interface SortOption {
+  id: string;
+  title: string;
+  description: string;
+  disabled?: boolean;
+  comingSoon?: boolean;
+}
+
+const aiPoweredOptions: SortOption[] = [
+  {
+    id: 'liked-songs',
+    title: 'Liked song sort',
+    description: 'Your liked songs will be moved to your current playlist',
+    disabled: true,
+    comingSoon: true,
+  },
+  {
+    id: 'start-scratch',
+    title: 'Start from scratch',
+    description: 'Create a new playlist from your liked songs',
+    disabled: true,
+    comingSoon: true,
+  },
+];
+
+const actionOptions: SortOption[] = [
+  {
+    id: 'merge-playlists',
+    title: 'Merge Playlists',
+    description: 'Merge between existing playlists',
+    disabled: false,
+  },
+  {
+    id: 'new-release-playlist',
+    title: 'New Release Playlist',
+    description: 'Create a playlist based on your latest releases songs',
+    disabled: false,
+    comingSoon: false,
+  },
+];
+
 export default function SortOptionsPage() {
   const router = useRouter();
 
-  const handleOptionClick = (option: string) => {
-    console.log(`Selected option: ${option}`);
+  const handleOptionClick = (option: SortOption) => {
+    if (option.disabled) {
+      return; // Don't do anything if disabled
+    }
+
+    console.log(`Selected option: ${option.id}`);
     
-    switch (option) {
+    switch (option.id) {
       case 'merge-playlists':
         router.push('/merge-playlist');
         break;
-      case 'liked-songs':
-        alert('Liked songs feature coming soon!');
-        break;
-      case 'start-scratch':
-        alert('Start from scratch feature coming soon!');
-        break;
       default:
-        alert(`You selected: ${option}`);
+        console.log(`Option ${option.id} not implemented yet`);
     }
   };
+
+  const renderSection = (title: string, options: SortOption[]) => (
+    <div className={styles.section}>
+      <h2 className={styles.sectionTitle}>{title}</h2>
+      <div className={styles.sectionOptions}>
+        {options.map((option) => (
+          <div
+            key={option.id}
+            className={`${styles.optionCard} ${option.disabled ? styles.disabled : ''}`}
+            onClick={() => handleOptionClick(option)}
+          >
+            <div className={styles.optionHeader}>
+              <div className={styles.optionTitle}>{option.title}</div>
+              {option.comingSoon && (
+                <span className={styles.comingSoonBadge}>Coming Soon</span>
+              )}
+            </div>
+            <div className={styles.optionDescription}>
+              {option.description}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <BaseTemplate title="Sort">
       <div className={styles.sortOptions}>
-        <div className={styles.optionCard} onClick={() => handleOptionClick('liked-songs')}>
-          <div className={styles.optionTitle}>Liked song sort</div>
-          <div className={styles.optionDescription}>
-            Your liked songs will be moved to your current playlist
-          </div>
-        </div>
-
-        <div className={styles.optionCard} onClick={() => handleOptionClick('merge-playlists')}>
-          <div className={styles.optionTitle}>Merge Playlists</div>
-          <div className={styles.optionDescription}>
-            Merge between existing playlists
-          </div>
-        </div>
-
-        <div className={styles.optionCard} onClick={() => handleOptionClick('start-scratch')}>
-          <div className={styles.optionTitle}>Start from scratch</div>
-          <div className={styles.optionDescription}>
-            Your liked songs will be moved to your current playlist
-          </div>
-        </div>
+        {renderSection('Powered by AI', aiPoweredOptions)}
+        {renderSection('Actions', actionOptions)}
       </div>
     </BaseTemplate>
   );

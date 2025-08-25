@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { sessionUtils } from '@/utils/session';
 import { sessionValidationService, SessionStatus } from '@/services/sessionValidation';
@@ -34,13 +34,13 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({ children }) =>
 
   const isLoggedIn = sessionUtils.isLoggedIn();
 
-  const logout = () => {
+  const logout = useCallback(() => {
     sessionUtils.clearSession();
     setSessionStatus(null);
     router.push('/login');
-  };
+  }, [router]);
 
-  const refreshSession = async () => {
+  const refreshSession = useCallback(async () => {
     if (!isLoggedIn) {
       setIsLoading(false);
       return;
@@ -60,7 +60,7 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({ children }) =>
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [isLoggedIn, logout]);
 
   useEffect(() => {
     refreshSession();
@@ -76,7 +76,7 @@ export const SessionProvider: React.FC<SessionProviderProps> = ({ children }) =>
     });
 
     return cleanup;
-  }, [isLoggedIn]);
+  }, [isLoggedIn, logout, refreshSession]);
 
   const value: SessionContextType = {
     sessionStatus,

@@ -5,3 +5,5 @@ There are some rules that you need to follow:
 - DO NOT create files more than 100 lines of code. Try to modularize.
 - Try always to follow a design standard. Like button or block pattern. 
 - Reutilize component as most as you can. 
+- Try always to separate the logic with the rendering. 
+- Delete the unnecessary classname, or class that are not longer use it.

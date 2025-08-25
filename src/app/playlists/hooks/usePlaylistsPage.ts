@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSession } from '@/contexts/SessionContext';
 import { apiService } from '@/services/api';
 import { SpotifyPlaylist } from '@/types/spotify';
 
-export function usePlaylists() {
+export function usePlaylistsPage() {
   const { sessionStatus } = useSession();
   const [playlists, setPlaylists] = useState<SpotifyPlaylist[]>([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +14,7 @@ export function usePlaylists() {
       if (!sessionStatus?.isValid) return;
 
       try {
-        const sessionId = sessionStatus.sessionId;
+        const sessionId = sessionStatus.sessionId || '';
         const response = await apiService.getPlaylists(sessionId);
         
         if (response.success && response.playlists) {
@@ -32,5 +32,9 @@ export function usePlaylists() {
     fetchPlaylists();
   }, [sessionStatus]);
 
-  return { playlists, loading, error };
+  return {
+    playlists,
+    loading,
+    error,
+  };
 }

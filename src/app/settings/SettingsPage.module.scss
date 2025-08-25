@@ -1,0 +1,17 @@
+.settingsContainer {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+}
+
+.settingsTitle {
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+}
+
+.settingsDescription {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+}

@@ -1,4 +1,4 @@
-import SpotifyLogo from './icons/SpotifyLogo';
+import SpotifyLogo from '../icons/SpotifyLogo';
 import styles from './SpotifyConnectButton.module.scss';
 
 interface SpotifyConnectButtonProps {

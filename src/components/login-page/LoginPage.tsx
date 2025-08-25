@@ -1,4 +1,4 @@
-import SpotifyConnectButton from './SpotifyConnectButton';
+import SpotifyConnectButton from '../spotify-connect-button/SpotifyConnectButton';
 import styles from './LoginPage.module.scss';
 
 interface LoginPageProps {

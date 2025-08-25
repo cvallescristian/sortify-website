@@ -21,7 +21,7 @@ export class AuthCallbackService {
     return {
       status: 'error',
       message: errorMessage,
-      redirectTo: '/',
+      redirectTo: '/login',
       delay: 3000
     };
   }

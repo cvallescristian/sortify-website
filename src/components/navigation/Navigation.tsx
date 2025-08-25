@@ -1,13 +1,19 @@
-'use client';
+"use client";
 
-import { useRouter, usePathname } from 'next/navigation';
-import { Home, Music, ListMusic } from 'lucide-react';
-import styles from './Navigation.module.scss';
+import { useRouter, usePathname } from "next/navigation";
+import { User, Music, ArrowDownWideNarrow } from "lucide-react";
+import styles from "./Navigation.module.scss";
 
 const navItems = [
-  { id: 'home', label: 'Home', icon: Home, path: '/' },
-  { id: 'sort', label: 'Sort', icon: Music, path: '/sort' },
-  { id: 'playlists', label: 'Playlists', icon: ListMusic, path: '/playlists', hasNotification: true }
+  {
+    id: "playlists",
+    label: "Playlists",
+    icon: Music,
+    path: "/playlists",
+    hasNotification: false,
+  },
+  { id: "sort", label: "Sort", icon: ArrowDownWideNarrow, path: "/sort" },
+  { id: "account", label: "Account", icon: User, path: "/account" },
 ];
 
 export default function Navigation() {
@@ -15,7 +21,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    return path === '/' ? pathname === '/' : pathname.startsWith(path);
+    return pathname.startsWith(path);
   };
 
   return (
@@ -25,7 +31,9 @@ export default function Navigation() {
         return (
           <div
             key={item.id}
-            className={`${styles.navItem} ${isActive(item.path) ? styles.active : ''}`}
+            className={`${styles.navItem} ${
+              isActive(item.path) ? styles.active : ""
+            }`}
             onClick={() => router.push(item.path)}
           >
             <div className={styles.navIcon}>

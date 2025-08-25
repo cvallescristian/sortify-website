@@ -31,7 +31,7 @@ export function useAuthCallback() {
         console.error('Error in auth callback:', error);
         setStatus('error');
         setMessage('Authentication failed. Please try again.');
-        setTimeout(() => router.push('/'), 3000);
+        setTimeout(() => router.push('/login'), 3000);
       }
     };
 

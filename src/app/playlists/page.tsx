@@ -3,7 +3,7 @@ import styles from './PlaylistsPage.module.scss';
 
 export default function PlaylistsPage() {
   return (
-    <BaseTemplate title="Playlists" showBackButton>
+    <BaseTemplate title="Playlists">
       <div className={styles.playlistsContainer}>
         <h2 className={styles.playlistsTitle}>Your Playlists</h2>
         <p className={styles.playlistsDescription}>

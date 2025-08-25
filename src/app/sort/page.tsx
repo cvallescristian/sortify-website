@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import BaseTemplate from '@/components/base-template/BaseTemplate';
+import { ProtectedRoute } from '@/components/protected-route/ProtectedRoute';
 import styles from './SortOptions.module.scss';
 
 interface SortOption {
@@ -92,12 +93,20 @@ export default function SortOptionsPage() {
     </div>
   );
 
+  const SortContent = () => {
+    return (
+      <BaseTemplate title="Sort">
+        <div className={styles.sortOptions}>
+          {renderSection('Powered by AI', aiPoweredOptions)}
+          {renderSection('Actions', actionOptions)}
+        </div>
+      </BaseTemplate>
+    );
+  };
+
   return (
-    <BaseTemplate title="Sort">
-      <div className={styles.sortOptions}>
-        {renderSection('Powered by AI', aiPoweredOptions)}
-        {renderSection('Actions', actionOptions)}
-      </div>
-    </BaseTemplate>
+    <ProtectedRoute>
+      <SortContent />
+    </ProtectedRoute>
   );
 }

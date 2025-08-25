@@ -1,6 +1,22 @@
-import { SpotifyPlaylist, SpotifyRelease } from '@/types/spotify';
+import { sessionUtils } from '@/utils/session';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+
+// Helper function to handle API responses and session validation
+const handleApiResponse = async (response: Response) => {
+  if (response.status === 401) {
+    // Session expired, clear session and redirect to login
+    sessionUtils.clearSession();
+    window.location.href = '/login';
+    throw new Error('Session expired');
+  }
+  
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status}`);
+  }
+  
+  return response.json();
+};
 
 export const apiService = {
   // Spotify Authentication
@@ -20,7 +36,48 @@ export const apiService = {
         'Authorization': `Bearer ${sessionId}`,
       },
     });
-    return response.json();
+    return handleApiResponse(response);
+  },
+
+  // Create new playlist with tracks
+  createPlaylist: async (
+    sessionId: string,
+    name: string,
+    trackIds: string[] = [],
+    description: string = '',
+    saveToLibrary: boolean = false,
+    overrideExisting: boolean = false
+  ) => {
+    const response = await fetch(`${API_BASE_URL}/playlist/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sessionId}`,
+      },
+      body: JSON.stringify({
+        trackIds,
+        name,
+        description,
+        saveToLibrary,
+        overrideExisting,
+      }),
+    });
+    return handleApiResponse(response);
+  },
+
+  // Check if playlist exists by name
+  checkPlaylistExists: async (sessionId: string, name: string) => {
+    const response = await fetch(`${API_BASE_URL}/playlist/check-exists`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sessionId}`,
+      },
+      body: JSON.stringify({
+        name,
+      }),
+    });
+    return handleApiResponse(response);
   },
 
   // Releases
@@ -34,20 +91,21 @@ export const apiService = {
         'Authorization': `Bearer ${sessionId}`,
       },
     });
-    return response.json();
+    return handleApiResponse(response);
   },
 
-  getFollowedArtistsReleases: async (sessionId: string, limit?: number) => {
-    const url = limit 
-      ? `${API_BASE_URL}/releases/followed?limit=${limit}`
-      : `${API_BASE_URL}/releases/followed`;
-    
-    const response = await fetch(url, {
+  getTrackIdsFromReleases: async (sessionId: string, releaseIds: string[]) => {
+    const response = await fetch(`${API_BASE_URL}/releases/track-ids`, {
+      method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'Authorization': `Bearer ${sessionId}`,
       },
+      body: JSON.stringify({
+        releaseIds,
+      }),
     });
-    return response.json();
+    return handleApiResponse(response);
   },
 
   // Merge Playlists
@@ -69,6 +127,16 @@ export const apiService = {
         description,
       }),
     });
-    return response.json();
+    return handleApiResponse(response);
+  },
+
+  // Session validation
+  validateSession: async (sessionId: string) => {
+    const response = await fetch(`${API_BASE_URL}/auth/profile`, {
+      headers: {
+        'Authorization': `Bearer ${sessionId}`,
+      },
+    });
+    return handleApiResponse(response);
   },
 };

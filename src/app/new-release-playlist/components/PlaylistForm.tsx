@@ -5,15 +5,19 @@ import styles from './PlaylistForm.module.scss';
 interface PlaylistFormProps {
   newPlaylistName: string;
   description: string;
+  saveToLibrary: boolean;
   onNameChange: (name: string) => void;
   onDescriptionChange: (description: string) => void;
+  onSaveToLibraryChange: (saveToLibrary: boolean) => void;
 }
 
 export default function PlaylistForm({
   newPlaylistName,
   description,
+  saveToLibrary,
   onNameChange,
-  onDescriptionChange
+  onDescriptionChange,
+  onSaveToLibraryChange
 }: PlaylistFormProps) {
   return (
     <div className={styles.formSection}>
@@ -46,6 +50,20 @@ export default function PlaylistForm({
           className={styles.textarea}
           rows={4}
         />
+      </div>
+
+      <div className={styles.inputGroup}>
+        <label className={styles.checkboxLabel}>
+          <input
+            type="checkbox"
+            checked={saveToLibrary}
+            onChange={(e) => onSaveToLibraryChange(e.target.checked)}
+            className={styles.checkbox}
+          />
+          <span className={styles.checkboxText}>
+            Save to my library
+          </span>
+        </label>
       </div>
     </div>
   );

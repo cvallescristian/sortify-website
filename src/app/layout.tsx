@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SessionProvider } from "@/contexts/SessionContext";
+import { SessionBanner } from "@/components/session-banner/SessionBanner";
 
 export const metadata: Metadata = {
   title: "Sortify",
@@ -14,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <SessionProvider>
+          <SessionBanner />
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );

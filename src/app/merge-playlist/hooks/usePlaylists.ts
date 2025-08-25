@@ -1,24 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { sessionUtils } from '@/utils/session';
+import { useSession } from '@/contexts/SessionContext';
 import { apiService } from '@/services/api';
 import { SpotifyPlaylist } from '@/types/spotify';
 
 export function usePlaylists() {
-  const router = useRouter();
+  const { sessionStatus } = useSession();
   const [playlists, setPlaylists] = useState<SpotifyPlaylist[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPlaylists = async () => {
-      try {
-        const sessionId = sessionUtils.getSessionId();
-        if (!sessionId) {
-          router.push('/');
-          return;
-        }
+      if (!sessionStatus?.isValid) return;
 
+      try {
+        const sessionId = sessionStatus.sessionId;
         const response = await apiService.getPlaylists(sessionId);
         
         if (response.success && response.playlists) {
@@ -26,7 +22,7 @@ export function usePlaylists() {
         } else {
           setError(response.error || 'Failed to fetch playlists');
         }
-      } catch {
+      } catch (error) {
         setError('An error occurred while fetching playlists');
       } finally {
         setLoading(false);
@@ -34,7 +30,7 @@ export function usePlaylists() {
     };
 
     fetchPlaylists();
-  }, [router]);
+  }, [sessionStatus]);
 
   return { playlists, loading, error };
 }

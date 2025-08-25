@@ -52,6 +52,28 @@
   }
 }
 
+.navProfileImage {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 0.125rem solid var(--color-border);
+}
+
+.navProfilePlaceholder {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 0.125rem solid var(--color-border);
+}
+
 .navLabel {
   font-size: var(--font-size-xs);
   font-weight: 500;

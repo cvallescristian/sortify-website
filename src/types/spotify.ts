@@ -19,6 +19,7 @@ export interface SpotifyUser {
     href: string | null;
     total: number;
   };
+  birthdate?: string;
 }
 
 export interface SpotifyTokens {

@@ -59,6 +59,9 @@ export default function SortOptionsPage() {
       case 'merge-playlists':
         router.push('/merge-playlist');
         break;
+      case 'new-release-playlist':
+        router.push('/new-release-playlist');
+        break;
       default:
         console.log(`Option ${option.id} not implemented yet`);
     }

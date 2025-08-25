@@ -1,143 +1,74 @@
-import { config } from '@/utils/env';
-import { SpotifyUser, PlaylistsResponse } from '@/types/spotify';
+import { SpotifyPlaylist, SpotifyRelease } from '@/types/spotify';
 
-interface AuthResponse {
-  success: boolean;
-  authUrl?: string;
-  state?: string;
-  error?: string;
-}
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
-interface ProfileResponse {
-  success: boolean;
-  user?: SpotifyUser;
-  error?: string;
-}
+export const apiService = {
+  // Spotify Authentication
+  initiateSpotifyLogin: async () => {
+    const response = await fetch(`${API_BASE_URL}/auth/login`);
+    return response.json();
+  },
 
-interface LogoutResponse {
-  success: boolean;
-  message?: string;
-  error?: string;
-}
+  // Playlists
+  getPlaylists: async (sessionId: string, searchQuery?: string) => {
+    const url = searchQuery 
+      ? `${API_BASE_URL}/playlist?search=${encodeURIComponent(searchQuery)}`
+      : `${API_BASE_URL}/playlist`;
+    
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${sessionId}`,
+      },
+    });
+    return response.json();
+  },
 
-interface MergePlaylistsResponse {
-  success: boolean;
-  playlist?: {
-    id: string;
-    name: string;
-    description?: string;
-    external_urls: { spotify: string };
-  };
-  error?: string;
-}
+  // Releases
+  getLatestReleases: async (sessionId: string, limit?: number) => {
+    const url = limit 
+      ? `${API_BASE_URL}/releases?limit=${limit}`
+      : `${API_BASE_URL}/releases`;
+    
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${sessionId}`,
+      },
+    });
+    return response.json();
+  },
 
-class ApiService {
-  private baseUrl: string;
+  getFollowedArtistsReleases: async (sessionId: string, limit?: number) => {
+    const url = limit 
+      ? `${API_BASE_URL}/releases/followed?limit=${limit}`
+      : `${API_BASE_URL}/releases/followed`;
+    
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${sessionId}`,
+      },
+    });
+    return response.json();
+  },
 
-  constructor() {
-    this.baseUrl = config.apiUrl;
-  }
-
-  async initiateSpotifyLogin(): Promise<AuthResponse> {
-    try {
-      const response = await fetch(`${this.baseUrl}/auth/login`);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error initiating Spotify login:', error);
-      return {
-        success: false,
-        error: 'Failed to connect to authentication service'
-      };
-    }
-  }
-
-  async getProfile(sessionId: string): Promise<ProfileResponse> {
-    try {
-      const response = await fetch(`${this.baseUrl}/auth/profile`, {
-        headers: {
-          'Authorization': `Bearer ${sessionId}`
-        }
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching profile:', error);
-      return {
-        success: false,
-        error: 'Failed to fetch user profile'
-      };
-    }
-  }
-
-  async logout(sessionId: string): Promise<LogoutResponse> {
-    try {
-      const response = await fetch(`${this.baseUrl}/auth/logout`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${sessionId}`
-        }
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error logging out:', error);
-      return {
-        success: false,
-        error: 'Failed to logout'
-      };
-    }
-  }
-
-  async getPlaylists(sessionId: string): Promise<PlaylistsResponse> {
-    try {
-      const response = await fetch(`${this.baseUrl}/playlist`, {
-        headers: {
-          'Authorization': `Bearer ${sessionId}`
-        }
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching playlists:', error);
-      return {
-        success: false,
-        playlists: [],
-        count: 0,
-        error: 'Failed to fetch playlists'
-      };
-    }
-  }
-
-  async mergePlaylists(
-    sessionId: string,
-    playlistIds: string[],
-    name: string,
-    description?: string
-  ): Promise<MergePlaylistsResponse> {
-    try {
-      const response = await fetch(`${this.baseUrl}/playlist/merge`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${sessionId}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          playlistIds,
-          name,
-          description: description || ''
-        })
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error merging playlists:', error);
-      return {
-        success: false,
-        error: 'Failed to merge playlists'
-      };
-    }
-  }
-}
-
-export const apiService = new ApiService();
+  // Merge Playlists
+  mergePlaylists: async (
+    sessionId: string, 
+    playlistIds: string[], 
+    name: string, 
+    description: string
+  ) => {
+    const response = await fetch(`${API_BASE_URL}/playlist/merge`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sessionId}`,
+      },
+      body: JSON.stringify({
+        playlistIds,
+        name,
+        description,
+      }),
+    });
+    return response.json();
+  },
+};

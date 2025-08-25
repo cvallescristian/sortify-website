@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import LoginPage from '@/components/LoginPage';
 
-export default function HomePage() {
+export default function LoginRoute() {
   const router = useRouter();
 
   const handleConnect = () => {

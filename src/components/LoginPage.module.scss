@@ -1,0 +1,39 @@
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  padding: var(--spacing-lg);
+}
+
+.loginContent {
+  text-align: center;
+  max-width: 25rem;
+  width: 100%;
+}
+
+.loginTitle {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-primary);
+  letter-spacing: -0.03125rem;
+}
+
+.loginSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-3xl);
+  line-height: 1.5;
+}
+
+@media (min-width: 48rem) {
+  .loginTitle {
+    font-size: var(--font-size-5xl);
+  }
+
+  .loginSubtitle {
+    font-size: var(--font-size-xl);
+  }
+}

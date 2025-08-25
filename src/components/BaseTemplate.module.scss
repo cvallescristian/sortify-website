@@ -1,0 +1,10 @@
+.appContainer {
+  // Container styles
+}
+
+.mainContent {
+  margin-top: var(--header-height);
+  margin-bottom: var(--navigation-height);
+  min-height: calc(100vh - var(--header-height) - var(--navigation-height));
+  padding: var(--spacing-lg) var(--spacing-md);
+}

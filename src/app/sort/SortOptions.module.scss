@@ -1,0 +1,50 @@
+.sortOptions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+.optionCard {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-0.125rem);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.optionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+}
+
+.optionDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.sortButton {
+  margin-top: var(--spacing-lg);
+  width: 100%;
+  max-width: 17.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+@media (min-width: 48rem) {
+  .sortOptions {
+    max-width: 37.5rem;
+  }
+}

@@ -39,25 +39,48 @@ export interface SpotifyPlaylist {
     width?: number;
   }>;
   owner: {
-    display_name: string;
     id: string;
+    display_name: string;
+    external_urls: { spotify: string };
   };
   public: boolean;
+  collaborative: boolean;
   tracks: {
+    href: string;
     total: number;
   };
+  type: string;
   uri: string;
   href: string;
-  external_urls: {
-    spotify: string;
+  external_urls: { spotify: string };
+  snapshot_id: string;
+}
+
+export interface SpotifyTrack {
+  id: string;
+  name: string;
+  artists: Array<{
+    id: string;
+    name: string;
+    external_urls: { spotify: string };
+  }>;
+  album: {
+    id: string;
+    name: string;
+    images?: Array<{ url: string; height?: number; width?: number }>;
+    external_urls: { spotify: string };
   };
+  duration_ms: number;
+  external_urls: { spotify: string };
+  uri: string;
+  type: string;
 }
 
 export interface PlaylistsResponse {
-  items: SpotifyPlaylist[];
-  total: number;
-  limit: number;
-  offset: number;
+  success: boolean;
+  playlists: SpotifyPlaylist[];
+  count: number;
+  error?: string;
 }
 
 export interface SessionData {

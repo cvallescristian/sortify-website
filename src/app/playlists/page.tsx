@@ -21,18 +21,18 @@ export default function PlaylistsPage() {
       try {
         const sessionId = sessionUtils.getSessionId();
         if (!sessionId) {
-          router.push('/login');
+          router.push('/');
           return;
         }
 
         const response = await apiService.getPlaylists(sessionId);
         
-        if (response.success && response.data) {
-          setPlaylists(response.data.items);
+        if (response.success && response.playlists) {
+          setPlaylists(response.playlists);
         } else {
           setError(response.error || 'Failed to fetch playlists');
         }
-      } catch (err) {
+      } catch {
         setError('An error occurred while fetching playlists');
       } finally {
         setLoading(false);

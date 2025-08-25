@@ -20,12 +20,6 @@ interface LogoutResponse {
   error?: string;
 }
 
-interface PlaylistsApiResponse {
-  success: boolean;
-  data?: PlaylistsResponse;
-  error?: string;
-}
-
 class ApiService {
   private baseUrl: string;
 
@@ -84,7 +78,7 @@ class ApiService {
     }
   }
 
-  async getPlaylists(sessionId: string): Promise<PlaylistsApiResponse> {
+  async getPlaylists(sessionId: string): Promise<PlaylistsResponse> {
     try {
       const response = await fetch(`${this.baseUrl}/playlist`, {
         headers: {
@@ -97,6 +91,8 @@ class ApiService {
       console.error('Error fetching playlists:', error);
       return {
         success: false,
+        playlists: [],
+        count: 0,
         error: 'Failed to fetch playlists'
       };
     }

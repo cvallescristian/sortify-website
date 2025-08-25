@@ -29,6 +29,37 @@ export interface SpotifyTokens {
   token_type: string;
 }
 
+export interface SpotifyPlaylist {
+  id: string;
+  name: string;
+  description?: string;
+  images?: Array<{
+    url: string;
+    height?: number;
+    width?: number;
+  }>;
+  owner: {
+    display_name: string;
+    id: string;
+  };
+  public: boolean;
+  tracks: {
+    total: number;
+  };
+  uri: string;
+  href: string;
+  external_urls: {
+    spotify: string;
+  };
+}
+
+export interface PlaylistsResponse {
+  items: SpotifyPlaylist[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
 export interface SessionData {
   sessionId: string;
   user: SpotifyUser;

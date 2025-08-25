@@ -29,6 +29,12 @@
   --font-size-3xl: 2rem;       /* 32px */
   --font-size-4xl: 3rem;       /* 48px */
   --font-size-5xl: 3.5rem;     /* 56px */
+  
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   /* Spacing */
   --spacing-xs: 0.25rem;       /* 4px */
@@ -61,6 +67,13 @@
   --header-height: 5rem;       /* 80px */
   --navigation-height: 5rem;   /* 80px */
   --container-max-width: 48rem; /* 768px */
+  
+  /* Breakpoints */
+  --breakpoint-sm: 30rem;      /* 480px */
+  --breakpoint-md: 48rem;      /* 768px */
+  --breakpoint-lg: 64rem;      /* 1024px */
+  --breakpoint-xl: 80rem;      /* 1280px */
+  --breakpoint-2xl: 96rem;     /* 1536px */
 }
 
 /* Reset and base styles */

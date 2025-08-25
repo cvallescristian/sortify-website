@@ -1,5 +1,5 @@
 import { config } from '@/utils/env';
-import { SpotifyUser } from '@/types/spotify';
+import { SpotifyUser, PlaylistsResponse } from '@/types/spotify';
 
 interface AuthResponse {
   success: boolean;
@@ -17,6 +17,12 @@ interface ProfileResponse {
 interface LogoutResponse {
   success: boolean;
   message?: string;
+  error?: string;
+}
+
+interface PlaylistsApiResponse {
+  success: boolean;
+  data?: PlaylistsResponse;
   error?: string;
 }
 
@@ -74,6 +80,24 @@ class ApiService {
       return {
         success: false,
         error: 'Failed to logout'
+      };
+    }
+  }
+
+  async getPlaylists(sessionId: string): Promise<PlaylistsApiResponse> {
+    try {
+      const response = await fetch(`${this.baseUrl}/playlist`, {
+        headers: {
+          'Authorization': `Bearer ${sessionId}`
+        }
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching playlists:', error);
+      return {
+        success: false,
+        error: 'Failed to fetch playlists'
       };
     }
   }

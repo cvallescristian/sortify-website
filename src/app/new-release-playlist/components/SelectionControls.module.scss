@@ -13,20 +13,6 @@
   align-items: center;
 }
 
-.selectAllLabel {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  cursor: pointer;
-  user-select: none;
-}
-
-.selectAllText {
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--color-text);
-}
-
 .rightSection {
   display: flex;
   flex-direction: column;
@@ -48,50 +34,4 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   font-weight: 500;
-}
-
-.switchContainer {
-  position: relative;
-  display: inline-block;
-  width: 3rem;
-  height: 1.5rem;
-}
-
-.switchInput {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  position: absolute;
-}
-
-.switchSlider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--color-border);
-  transition: 0.3s;
-  border-radius: 1.5rem;
-}
-
-.switchSlider:before {
-  position: absolute;
-  content: "";
-  height: 1.125rem;
-  width: 1.125rem;
-  left: 0.1875rem;
-  bottom: 0.1875rem;
-  background-color: var(--color-white);
-  transition: 0.3s;
-  border-radius: 50%;
-}
-
-.switchInput:checked + .switchSlider {
-  background-color: var(--color-primary);
-}
-
-.switchInput:checked + .switchSlider:before {
-  transform: translateX(1.5rem);
 }

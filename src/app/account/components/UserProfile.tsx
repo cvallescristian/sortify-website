@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { SpotifyUser } from '@/types/spotify';
 import styles from './UserProfile.module.scss';
 
@@ -19,9 +20,11 @@ export default function UserProfile({ user }: UserProfileProps) {
     <div className={styles.profileSection}>
       <div className={styles.profileHeader}>
         {user.images && user.images.length > 0 ? (
-          <img 
+          <Image 
             src={user.images[0].url} 
             alt={user.display_name}
+            width={80}
+            height={80}
             className={styles.avatar}
           />
         ) : (

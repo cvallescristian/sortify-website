@@ -2,6 +2,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { User, Music, ArrowDownWideNarrow, LucideIcon } from "lucide-react";
+import Image from "next/image";
 import { sessionUtils } from "@/utils/session";
 import { useEffect, useState } from "react";
 import { SpotifyUser } from "@/types/spotify";
@@ -45,9 +46,11 @@ export default function Navigation() {
     if (item.id === "account") {
       if (user?.images && user.images.length > 0) {
         return (
-          <img
+          <Image
             src={user.images[0].url}
             alt={user.display_name}
+            width={24}
+            height={24}
             className={styles.navProfileImage}
           />
         );

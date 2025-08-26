@@ -1,3 +1,4 @@
+import Switch from '@/components/switch/Switch';
 import styles from './SelectionControls.module.scss';
 
 interface SelectionControlsProps {
@@ -16,18 +17,11 @@ export default function SelectionControls({
   return (
     <div className={styles.selectAllRow}>
       <div className={styles.selectAllContainer}>
-        <label className={styles.selectAllLabel}>
-          <span className={styles.selectAllText}>Select All</span>
-          <div className={styles.switchContainer}>
-            <input
-              type="checkbox"
-              checked={isAllSelected}
-              onChange={(e) => onSelectAll(e.target.checked)}
-              className={styles.switchInput}
-            />
-            <span className={styles.switchSlider}></span>
-          </div>
-        </label>
+        <Switch
+          checked={isAllSelected}
+          onChange={onSelectAll}
+          label="Select All"
+        />
       </div>
       <div className={styles.rightSection}>
         <h3 className={styles.albumsTitle}>Albums</h3>

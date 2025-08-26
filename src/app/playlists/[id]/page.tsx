@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+
 import { useParams, useRouter } from 'next/navigation';
 import BaseTemplate from '@/components/base-template/BaseTemplate';
 import { ProtectedRoute } from '@/components/protected-route/ProtectedRoute';
@@ -60,7 +60,7 @@ export default function PlaylistDetailsPage() {
           <div className={styles.errorContainer}>
             <h2 className={styles.errorTitle}>Playlist Not Found</h2>
             <p className={styles.errorMessage}>
-              The playlist you're looking for doesn't exist or you don't have access to it.
+              The playlist you&apos;re looking for doesn&apos;t exist or you don&apos;t have access to it.
             </p>
           </div>
         </BaseTemplate>

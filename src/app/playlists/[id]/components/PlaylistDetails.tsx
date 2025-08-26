@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { SpotifyPlaylist, SpotifyTrack } from '@/types/spotify';
 import BaseBlock from '@/components/base-block/BaseBlock';
 import DeleteButton from '@/components/delete-button/DeleteButton';
@@ -25,9 +26,11 @@ export default function PlaylistDetails({ playlist, tracks, onDelete }: Playlist
         <div className={styles.playlistHeader}>
           <div className={styles.playlistImage}>
             {playlist.images && playlist.images.length > 0 ? (
-              <img
+              <Image
                 src={playlist.images[0].url}
                 alt={playlist.name}
+                width={120}
+                height={120}
                 className={styles.playlistCover}
               />
             ) : (
@@ -43,7 +46,7 @@ export default function PlaylistDetails({ playlist, tracks, onDelete }: Playlist
               by {playlist.owner.display_name}
             </p>
             <p className={styles.playlistStats}>
-              {playlist.tracks.total} tracks • {playlist.followers?.total || 0} followers
+              {playlist.tracks.total} tracks
             </p>
             {playlist.description && (
               <p className={styles.playlistDescription}>{playlist.description}</p>
@@ -71,9 +74,11 @@ export default function PlaylistDetails({ playlist, tracks, onDelete }: Playlist
                 
                 <div className={styles.trackImage}>
                   {track.album.images && track.album.images.length > 0 ? (
-                    <img
+                    <Image
                       src={track.album.images[0].url}
                       alt={track.name}
+                      width={40}
+                      height={40}
                       className={styles.trackCover}
                     />
                   ) : (

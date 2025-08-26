@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { SpotifyRelease } from '@/types/spotify';
 import styles from './ReleasesList.module.scss';
 
@@ -47,9 +48,11 @@ export default function ReleasesList({
           >
             <div className={styles.releaseImage}>
               {release.images && release.images.length > 0 ? (
-                <img
+                <Image
                   src={release.images[0].url}
                   alt={release.name}
+                  width={60}
+                  height={60}
                   className={styles.releaseCover}
                 />
               ) : (

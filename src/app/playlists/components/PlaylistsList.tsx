@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
+import Image from 'next/image';
 import { SpotifyPlaylist } from "@/types/spotify";
 import styles from "./PlaylistsList.module.scss";
 
@@ -85,9 +86,11 @@ export default function PlaylistsList({ playlists }: PlaylistsListProps) {
           >
             <div className={styles.playlistImage}>
               {playlist.images && playlist.images.length > 0 ? (
-                <img
+                <Image
                   src={playlist.images[0].url}
                   alt={playlist.name}
+                  width={60}
+                  height={60}
                   className={styles.playlistCover}
                 />
               ) : (

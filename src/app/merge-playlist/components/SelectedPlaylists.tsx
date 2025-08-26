@@ -1,7 +1,7 @@
 'use client';
 
 import { X } from 'lucide-react';
-import Button from '@/components/button/Button';
+import Image from 'next/image';
 import { SpotifyPlaylist } from '@/types/spotify';
 import styles from './SelectedPlaylists.module.scss';
 
@@ -36,9 +36,11 @@ export default function SelectedPlaylists({
           <div key={playlist.id} className={styles.playlistCard}>
             <div className={styles.playlistImage}>
               {playlist.images && playlist.images.length > 0 ? (
-                <img
+                <Image
                   src={playlist.images[0].url}
                   alt={playlist.name}
+                  width={60}
+                  height={60}
                   className={styles.playlistCover}
                 />
               ) : (

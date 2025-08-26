@@ -1,6 +1,7 @@
 'use client';
 
 import BaseBlock from '@/components/base-block/BaseBlock';
+import Switch from '@/components/switch/Switch';
 import styles from './PlaylistForm.module.scss';
 
 interface PlaylistFormProps {
@@ -57,17 +58,11 @@ export default function PlaylistForm({
       </div>
 
       <div className={styles.inputGroup}>
-        <label className={styles.checkboxLabel}>
-          <input
-            type="checkbox"
-            checked={saveToLibrary}
-            onChange={(e) => onSaveToLibraryChange(e.target.checked)}
-            className={styles.checkbox}
-          />
-          <span className={styles.checkboxText}>
-            Save to my library
-          </span>
-        </label>
+        <Switch
+          checked={saveToLibrary}
+          onChange={onSaveToLibraryChange}
+          label="Save to my library"
+        />
       </div>
     </BaseBlock>
   );

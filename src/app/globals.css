@@ -66,7 +66,7 @@
   /* Layout */
   --header-height: 5rem;       /* 80px */
   --navigation-height: 5rem;   /* 80px */
-  --container-max-width: 48rem; /* 768px */
+  --container-max-width: 80rem; /* 1280px - increased for better grid layouts */
   
   /* Breakpoints */
   --breakpoint-sm: 30rem;      /* 480px */

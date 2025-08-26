@@ -1,5 +1,7 @@
 .playlistsContainer {
-  padding: 1rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
 }
 
 .playlistsHeader {
@@ -20,61 +22,164 @@
   font-size: 0.875rem;
 }
 
+.searchContainer {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.searchInputWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+  }
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+}
+
+.clearButton {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+  }
+
+  &:focus {
+    outline: none;
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+  }
+}
+
 .playlistsList {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-sm);
+  gap: 1rem;
+  width: 100%;
   
-  @media (min-width: var(--breakpoint-md)) {
+  /* Mobile - 1 column */
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  /* Tablet - 2 columns */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  /* Small desktop - 3 columns */
+  @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-sm);
+    gap: 1.25rem;
+  }
+  
+  /* Large desktop - 4 columns */
+  @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  
+  /* Extra large desktop - 5 columns */
+  @media (min-width: 1536px) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
   }
 }
 
 .playlistCard {
   background-color: var(--color-white);
   border-radius: var(--radius-md);
-  padding: var(--spacing-sm);
+  padding: var(--spacing-md);
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  height: 4rem;
+  height: 5rem;
   overflow: hidden;
+  width: 100%;
 
   &:hover {
     transform: translateY(-0.0625rem);
     box-shadow: var(--shadow-md);
   }
   
-  @media (min-width: var(--breakpoint-md)) {
-    height: 3.5rem;
+  /* Tablet and up - smaller height */
+  @media (min-width: 768px) {
+    height: 4rem;
     gap: var(--spacing-sm);
-    padding: 0.375rem;
+    padding: var(--spacing-sm);
+  }
+  
+  /* Desktop and up - even smaller height */
+  @media (min-width: 1024px) {
+    height: 3.5rem;
+    padding: var(--spacing-sm);
   }
 }
 
 .playlistImage {
-  flex: 0 0 30%;
+  flex: 0 0 25%;
   text-align: center;
+  
+  @media (min-width: 1024px) {
+    flex: 0 0 20%;
+  }
 }
 
 .playlistCover {
   width: 100%;
-  height: 3rem;
+  height: 3.5rem;
   object-fit: cover;
   border-radius: var(--radius-sm);
   
-  @media (min-width: var(--breakpoint-md)) {
+  @media (min-width: 768px) {
+    height: 3rem;
+  }
+  
+  @media (min-width: 1024px) {
     height: 2.5rem;
   }
 }
 
 .playlistPlaceholder {
   width: 100%;
-  height: 3rem;
+  height: 3.5rem;
   background-color: var(--color-surface);
   border-radius: var(--radius-sm);
   display: flex;
@@ -82,7 +187,11 @@
   justify-content: center;
   border: 0.125rem dashed var(--color-border-light);
   
-  @media (min-width: var(--breakpoint-md)) {
+  @media (min-width: 768px) {
+    height: 3rem;
+  }
+  
+  @media (min-width: 1024px) {
     height: 2.5rem;
   }
 }
@@ -91,7 +200,11 @@
   font-size: var(--font-size-xl);
   color: var(--color-text-muted);
   
-  @media (min-width: var(--breakpoint-md)) {
+  @media (min-width: 768px) {
+    font-size: var(--font-size-lg);
+  }
+  
+  @media (min-width: 1024px) {
     font-size: var(--font-size-base);
   }
 }
@@ -117,41 +230,51 @@
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   
-  @media (min-width: var(--breakpoint-md)) {
-    font-size: 0.75rem;
+  @media (min-width: 768px) {
+    font-size: var(--font-size-sm);
     margin: 0 0 0.0625rem 0;
     -webkit-line-clamp: 1;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 0.75rem;
   }
 }
 
 .playlistOwner {
   margin: 0 0 0.0625rem 0;
   color: var(--color-text-secondary);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   
-  @media (min-width: var(--breakpoint-md)) {
-    font-size: 0.625rem;
+  @media (min-width: 768px) {
+    font-size: 0.6875rem;
     margin: 0 0 0.0625rem 0;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 0.625rem;
   }
 }
 
 .playlistTracks {
   margin: 0;
   color: var(--color-text-secondary);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: var(--font-weight-medium);
   
-  @media (min-width: var(--breakpoint-md)) {
+  @media (min-width: 768px) {
+    font-size: 0.6875rem;
+  }
+  
+  @media (min-width: 1024px) {
     font-size: 0.625rem;
   }
 }
-
-
 
 .emptyState {
   text-align: center;

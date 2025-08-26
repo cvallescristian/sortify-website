@@ -2,6 +2,7 @@
 
 import { SpotifyPlaylist } from '@/types/spotify';
 import Button from '@/components/button/Button';
+import BaseBlock from '@/components/base-block/BaseBlock';
 import PlaylistSearch from './PlaylistSearch';
 import SelectedPlaylists from './SelectedPlaylists';
 import PlaylistForm from './PlaylistForm';
@@ -39,9 +40,12 @@ export default function MergePlaylistContent({ playlists }: MergePlaylistContent
 
   return (
     <div className={styles.container}>
-      <div className={styles.formSection}>
-        <h2 className={styles.sectionTitle}>Select Playlists to Merge</h2>
-        
+      <BaseBlock 
+        title="Select Playlists to Merge"
+        variant="form"
+        padding="xl"
+        margin="xl"
+      >
         <PlaylistSearch
           playlists={playlists}
           selectedPlaylists={selectedPlaylists}
@@ -52,7 +56,7 @@ export default function MergePlaylistContent({ playlists }: MergePlaylistContent
           selectedPlaylists={selectedPlaylists}
           onRemovePlaylist={handleRemovePlaylist}
         />
-      </div>
+      </BaseBlock>
 
       <PlaylistForm
         newPlaylistName={newPlaylistName}

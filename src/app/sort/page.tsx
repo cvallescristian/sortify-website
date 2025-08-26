@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import BaseTemplate from '@/components/base-template/BaseTemplate';
+import BaseBlock from '@/components/base-block/BaseBlock';
 import { ProtectedRoute } from '@/components/protected-route/ProtectedRoute';
 import styles from './SortOptions.module.scss';
 
@@ -73,9 +74,12 @@ export default function SortOptionsPage() {
       <h2 className={styles.sectionTitle}>{title}</h2>
       <div className={styles.sectionOptions}>
         {options.map((option) => (
-          <div
+          <BaseBlock
             key={option.id}
-            className={`${styles.optionCard} ${option.disabled ? styles.disabled : ''}`}
+            variant={option.disabled ? 'default' : 'card'}
+            padding="lg"
+            margin="md"
+            disabled={option.disabled}
             onClick={() => handleOptionClick(option)}
           >
             <div className={styles.optionHeader}>
@@ -87,7 +91,7 @@ export default function SortOptionsPage() {
             <div className={styles.optionDescription}>
               {option.description}
             </div>
-          </div>
+          </BaseBlock>
         ))}
       </div>
     </div>

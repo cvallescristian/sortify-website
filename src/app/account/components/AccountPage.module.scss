@@ -9,10 +9,6 @@
   &__container {
     max-width: 35rem;
     width: 100%;
-    padding: 1.5rem;
-    background-color: white;
-    border-radius: 0.75rem;
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
   }
 
   &__title {
@@ -116,34 +112,14 @@
     color: #1db954;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s ease;
 
     &:hover {
-      color: #1ed760;
       text-decoration: underline;
     }
   }
 
-
-
   &__logoutButton {
     width: 100%;
-    padding: 0.75rem 1.5rem;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-
-    &:hover {
-      background-color: #c82333;
-    }
-
-    &:active {
-      transform: translateY(0.0625rem);
-    }
+    margin-top: 2rem;
   }
 }

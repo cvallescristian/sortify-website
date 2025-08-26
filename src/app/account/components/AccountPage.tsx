@@ -1,4 +1,5 @@
 import Button from '@/components/button/Button';
+import BaseBlock from '@/components/base-block/BaseBlock';
 import { SpotifyUser } from '@/types/spotify';
 import UserProfile from './UserProfile';
 import styles from './AccountPage.module.scss';
@@ -11,7 +12,11 @@ interface AccountPageProps {
 export default function AccountPage({ user, onLogout }: AccountPageProps) {
   return (
     <div className={styles.accountPage}>
-      <div className={styles.accountPage__container}>
+      <BaseBlock 
+        variant="default"
+        padding="lg"
+        className={styles.accountPage__container}
+      >
         <h1 className={styles.accountPage__title}>Profile</h1>
         
         <UserProfile user={user} />
@@ -24,7 +29,7 @@ export default function AccountPage({ user, onLogout }: AccountPageProps) {
         >
           Logout
         </Button>
-      </div>
+      </BaseBlock>
     </div>
   );
 }

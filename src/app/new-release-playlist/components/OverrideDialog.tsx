@@ -1,4 +1,5 @@
 import Button from '@/components/button/Button';
+import BaseBlock from '@/components/base-block/BaseBlock';
 import styles from './OverrideDialog.module.scss';
 
 interface OverrideDialogProps {
@@ -16,7 +17,11 @@ export default function OverrideDialog({
 }: OverrideDialogProps) {
   return (
     <div className={styles.overrideDialog}>
-      <div className={styles.overrideContent}>
+      <BaseBlock 
+        variant="default"
+        padding="xl"
+        className={styles.overrideContent}
+      >
         <h3 className={styles.overrideTitle}>Playlist Already Exists</h3>
         <p className={styles.overrideMessage}>
           A playlist named &quot;{playlistName}&quot; already exists. Would you like to override it with the new tracks?
@@ -40,7 +45,7 @@ export default function OverrideDialog({
             {isCreating ? "Overriding..." : "Override Playlist"}
           </Button>
         </div>
-      </div>
+      </BaseBlock>
     </div>
   );
 }

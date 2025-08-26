@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { Check } from 'lucide-react';
 import Button from '@/components/button/Button';
+import BaseBlock from '@/components/base-block/BaseBlock';
 import SpotifyLogo from '@/components/icons/SpotifyLogo';
 import styles from './MergeSuccess.module.scss';
 
@@ -24,7 +25,11 @@ export default function MergeSuccess({ playlistName, spotifyUrl }: MergeSuccessP
 
   return (
     <div className={styles.successContainer}>
-      <div className={styles.successContent}>
+      <BaseBlock 
+        variant="success"
+        padding="xl"
+        className={styles.successContent}
+      >
         <div className={styles.successIcon}>
           <Check size={32} />
         </div>
@@ -51,7 +56,7 @@ export default function MergeSuccess({ playlistName, spotifyUrl }: MergeSuccessP
             Done
           </Button>
         </div>
-      </div>
+      </BaseBlock>
     </div>
   );
 }

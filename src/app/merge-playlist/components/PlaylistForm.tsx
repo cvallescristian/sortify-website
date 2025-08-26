@@ -1,5 +1,6 @@
 'use client';
 
+import BaseBlock from '@/components/base-block/BaseBlock';
 import styles from './PlaylistForm.module.scss';
 
 interface PlaylistFormProps {
@@ -16,9 +17,12 @@ export default function PlaylistForm({
   onDescriptionChange
 }: PlaylistFormProps) {
   return (
-    <div className={styles.formSection}>
-      <h2 className={styles.sectionTitle}>New Playlist Details</h2>
-      
+    <BaseBlock 
+      title="New Playlist Details"
+      variant="form"
+      padding="xl"
+      margin="xl"
+    >
       <div className={styles.inputGroup}>
         <label htmlFor="playlistName" className={styles.label}>
           Playlist Name *
@@ -47,6 +51,6 @@ export default function PlaylistForm({
           rows={4}
         />
       </div>
-    </div>
+    </BaseBlock>
   );
 }

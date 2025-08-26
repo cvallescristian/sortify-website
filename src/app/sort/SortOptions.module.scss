@@ -29,34 +29,6 @@
   gap: var(--spacing-md);
 }
 
-.optionCard {
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-
-  &:hover:not(.disabled) {
-    transform: translateY(-0.125rem);
-    box-shadow: var(--shadow-lg);
-  }
-
-  &.disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-    background-color: var(--color-surface);
-    border-color: var(--color-border-light);
-
-    &:hover {
-      transform: none;
-      box-shadow: var(--shadow-md);
-    }
-  }
-}
-
 .optionHeader {
   display: flex;
   justify-content: space-between;
@@ -70,10 +42,6 @@
   color: var(--color-text-primary);
   flex: 1;
   margin-right: var(--spacing-sm);
-
-  .disabled & {
-    color: var(--color-text-secondary);
-  }
 }
 
 .comingSoonBadge {
@@ -91,19 +59,11 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: 1.4;
-
-  .disabled & {
-    color: var(--color-text-muted);
-  }
 }
 
 .sortButton {
   margin-top: var(--spacing-lg);
   width: 100%;
-  max-width: 17.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
 }
 
 @media (min-width: 48rem) {

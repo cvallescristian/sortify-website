@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { Check } from 'lucide-react';
 import SpotifyLogo from '@/components/icons/SpotifyLogo';
 import styles from './MergeSuccess.module.scss';
 
@@ -23,7 +24,9 @@ export default function MergeSuccess({ playlistName, spotifyUrl }: MergeSuccessP
   return (
     <div className={styles.successContainer}>
       <div className={styles.successContent}>
-        <div className={styles.successIcon}>✅</div>
+        <div className={styles.successIcon}>
+          <Check size={32} />
+        </div>
         <h2 className={styles.successTitle}>Playlist Created Successfully!</h2>
         <p className={styles.successMessage}>
           Your new playlist &ldquo;{playlistName}&rdquo; has been created and is ready to use.

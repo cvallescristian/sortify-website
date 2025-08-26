@@ -18,11 +18,26 @@
   &__icon {
     margin-bottom: 1rem;
     color: #333;
-    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__text {
     color: #666;
     line-height: 1.5;
+  }
+}
+
+.spinningIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

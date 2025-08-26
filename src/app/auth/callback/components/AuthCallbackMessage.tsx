@@ -1,3 +1,4 @@
+import { Check, X, Loader2 } from 'lucide-react';
 import styles from './AuthCallbackMessage.module.scss';
 
 interface AuthCallbackMessageProps {
@@ -8,19 +9,19 @@ interface AuthCallbackMessageProps {
 export default function AuthCallbackMessage({ status, message }: AuthCallbackMessageProps) {
   const getStatusIcon = () => {
     switch (status) {
-      case 'loading': return '🔄';
-      case 'success': return '✅';
-      case 'error': return '❌';
-      default: return '';
+      case 'loading': return <Loader2 className={styles.spinningIcon} size={24} />;
+      case 'success': return <Check size={24} />;
+      case 'error': return <X size={24} />;
+      default: return null;
     }
   };
 
   return (
     <div className={styles.authCallbackMessage}>
       <div className={styles.authCallbackMessage__container}>
-        <h1 className={styles.authCallbackMessage__icon}>
+        <div className={styles.authCallbackMessage__icon}>
           {getStatusIcon()}
-        </h1>
+        </div>
         <p className={styles.authCallbackMessage__text}>
           {message}
         </p>

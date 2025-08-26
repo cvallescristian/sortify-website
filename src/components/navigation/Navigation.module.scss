@@ -8,9 +8,25 @@
   z-index: var(--z-navigation);
   padding: var(--spacing-sm) 0 var(--spacing-xs) 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   box-shadow: 0 -0.125rem 0.625rem var(--color-shadow);
+}
+
+.navItemsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 25rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+@media (min-width: 48rem) {
+  .navItemsContainer {
+    max-width: 37.5rem;
+  }
 }
 
 .navItem {

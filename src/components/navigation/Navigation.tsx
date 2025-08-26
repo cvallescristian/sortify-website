@@ -71,19 +71,21 @@ export default function Navigation() {
 
   return (
     <nav className={styles.bottomNav} suppressHydrationWarning>
-      {navItems.map((item) => (
-        <div
-          key={item.id}
-          className={`${styles.navItem} ${
-            isActive(item.path) ? styles.active : ""
-          }`}
-          onClick={() => router.push(item.path)}
-        >
-          <div className={styles.navIcon}>{renderNavIcon(item)}</div>
-          <div className={styles.navLabel}>{item.label}</div>
-          {item.hasNotification && <div className={styles.navBadge}>!</div>}
-        </div>
-      ))}
+      <div className={styles.navItemsContainer}>
+        {navItems.map((item) => (
+          <div
+            key={item.id}
+            className={`${styles.navItem} ${
+              isActive(item.path) ? styles.active : ""
+            }`}
+            onClick={() => router.push(item.path)}
+          >
+            <div className={styles.navIcon}>{renderNavIcon(item)}</div>
+            <div className={styles.navLabel}>{item.label}</div>
+            {item.hasNotification && <div className={styles.navBadge}>!</div>}
+          </div>
+        ))}
+      </div>
     </nav>
   );
 }

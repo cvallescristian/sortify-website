@@ -59,7 +59,7 @@ export default function PlaylistDetails({ playlist, tracks }: PlaylistDetailsPro
             </div>
           ) : (
             tracks.map((track, index) => (
-              <div key={track.id} className={styles.trackItem}>
+              <div key={`${track.id}-${index}`} className={styles.trackItem}>
                 <div className={styles.trackNumber}>{index + 1}</div>
                 
                 <div className={styles.trackImage}>

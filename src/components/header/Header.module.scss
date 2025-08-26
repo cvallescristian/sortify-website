@@ -12,10 +12,30 @@
   justify-content: space-between;
 }
 
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.headerLogo {
+  margin-left: var(--spacing-sm);
+}
+
 .headerTitle {
   font-size: var(--font-size-xl);
   font-weight: 600;
   color: var(--color-text-primary);
+  text-align: center;
+  flex: 1;
 }
 
 .backButton {

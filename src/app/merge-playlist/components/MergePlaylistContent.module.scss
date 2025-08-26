@@ -1,7 +1,15 @@
 .container {
-  max-width: var(--container-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  max-width: 25rem;
   margin: 0 auto;
-  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+@media (min-width: 48rem) {
+  .container {
+    max-width: 37.5rem;
+  }
 }
 
 .buttonContainer {

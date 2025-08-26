@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SessionProvider } from "@/contexts/SessionContext";
 import { SessionBanner } from "@/components/session-banner/SessionBanner";
+import PageTransition from "@/components/page-transition/PageTransition";
 
 export const metadata: Metadata = {
   title: "Sortify",
@@ -18,7 +19,9 @@ export default function RootLayout({
       <body suppressHydrationWarning={true}>
         <SessionProvider>
           <SessionBanner />
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </SessionProvider>
       </body>
     </html>

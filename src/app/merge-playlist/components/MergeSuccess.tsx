@@ -10,9 +10,10 @@ import styles from './MergeSuccess.module.scss';
 interface MergeSuccessProps {
   playlistName: string;
   spotifyUrl: string;
+  playlistId: string;
 }
 
-export default function MergeSuccess({ playlistName, spotifyUrl }: MergeSuccessProps) {
+export default function MergeSuccess({ playlistName, spotifyUrl, playlistId }: MergeSuccessProps) {
   const router = useRouter();
 
   const handleOpenSpotify = () => {
@@ -20,7 +21,7 @@ export default function MergeSuccess({ playlistName, spotifyUrl }: MergeSuccessP
   };
 
   const handleDone = () => {
-    router.push('/sort');
+    router.push(`/playlists/${playlistId}`);
   };
 
   return (

@@ -34,6 +34,7 @@ export default function MergePlaylistContent({ playlists }: MergePlaylistContent
       <MergeSuccess
         playlistName={createdPlaylist.name}
         spotifyUrl={createdPlaylist.external_urls.spotify}
+        playlistId={createdPlaylist.id}
       />
     );
   }

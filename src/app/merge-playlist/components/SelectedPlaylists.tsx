@@ -56,15 +56,14 @@ export default function SelectedPlaylists({
                 {playlist.tracks.total} tracks
               </p>
             </div>
-            <Button
+            <button
               onClick={() => onRemovePlaylist(playlist.id)}
-              variant="secondary"
-              size="sm"
               className={styles.removeButton}
               aria-label={`Remove ${playlist.name}`}
+              type="button"
             >
               <X size={16} />
-            </Button>
+            </button>
           </div>
         ))}
       </div>

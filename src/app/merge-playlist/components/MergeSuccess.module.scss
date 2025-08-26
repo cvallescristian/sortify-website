@@ -38,6 +38,13 @@
   flex-direction: column;
   gap: var(--spacing-md);
   align-items: center;
+  width: 100%;
+}
+
+.buttonGroup button {
+  width: 100%;
+  max-width: 10rem !important;
+  min-width: unset !important;
 }
 
 .spotifyLogo {
@@ -51,5 +58,11 @@
     flex-direction: row;
     justify-content: center;
     gap: var(--spacing-lg);
+  }
+  
+  .buttonGroup button {
+    width: auto !important;
+    min-width: 6rem !important;
+    max-width: 8rem !important;
   }
 }

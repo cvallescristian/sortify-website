@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { SpotifyPlaylist } from "@/types/spotify";
 import styles from "./PlaylistsList.module.scss";
@@ -11,6 +12,7 @@ interface PlaylistsListProps {
 
 export default function PlaylistsList({ playlists }: PlaylistsListProps) {
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   const filteredPlaylists = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -26,6 +28,10 @@ export default function PlaylistsList({ playlists }: PlaylistsListProps) {
 
   const handleClearSearch = () => {
     setSearchQuery('');
+  };
+
+  const handlePlaylistClick = (playlistId: string) => {
+    router.push(`/playlists/${playlistId}`);
   };
 
   if (playlists.length === 0) {
@@ -72,7 +78,11 @@ export default function PlaylistsList({ playlists }: PlaylistsListProps) {
 
       <div className={styles.playlistsList}>
         {filteredPlaylists.map((playlist) => (
-          <div key={playlist.id} className={styles.playlistCard}>
+          <div 
+            key={playlist.id} 
+            className={styles.playlistCard}
+            onClick={() => handlePlaylistClick(playlist.id)}
+          >
             <div className={styles.playlistImage}>
               {playlist.images && playlist.images.length > 0 ? (
                 <img

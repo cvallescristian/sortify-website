@@ -1,0 +1,18 @@
+.errorContainer {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-md);
+}
+
+.errorTitle {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.errorMessage {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}

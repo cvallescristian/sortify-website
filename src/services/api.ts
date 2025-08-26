@@ -139,4 +139,24 @@ export const apiService = {
     });
     return handleApiResponse(response);
   },
+
+  // Get playlist details
+  getPlaylistDetails: async (sessionId: string, playlistId: string) => {
+    const response = await fetch(`${API_BASE_URL}/playlist/${playlistId}`, {
+      headers: {
+        'Authorization': `Bearer ${sessionId}`,
+      },
+    });
+    return handleApiResponse(response);
+  },
+
+  // Get playlist tracks
+  getPlaylistTracks: async (sessionId: string, playlistId: string) => {
+    const response = await fetch(`${API_BASE_URL}/playlist/${playlistId}/tracks`, {
+      headers: {
+        'Authorization': `Bearer ${sessionId}`,
+      },
+    });
+    return handleApiResponse(response);
+  },
 };

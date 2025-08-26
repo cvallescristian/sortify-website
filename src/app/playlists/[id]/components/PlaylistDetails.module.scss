@@ -1,0 +1,277 @@
+.playlistDetailsContainer {
+  width: 100%;
+  max-width: 25rem;
+  margin: 0 auto;
+  
+  @media (min-width: 48rem) {
+    max-width: 37.5rem;
+  }
+}
+
+.playlistHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  align-items: center;
+  text-align: center;
+}
+
+.playlistImage {
+  flex-shrink: 0;
+}
+
+.playlistCover {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  
+  @media (min-width: 48rem) {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+.playlistPlaceholder {
+  width: 6rem;
+  height: 6rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.125rem dashed var(--color-border-light);
+  box-shadow: var(--shadow-md);
+  
+  @media (min-width: 48rem) {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+.playlistIcon {
+  font-size: 2rem;
+  color: var(--color-text-muted);
+  
+  @media (min-width: 48rem) {
+    font-size: 3rem;
+  }
+}
+
+.playlistInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.playlistName {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+.playlistOwner {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.playlistStats {
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-base);
+  }
+}
+
+.playlistDescription {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-base);
+  }
+}
+
+.tracksList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.trackItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-surface);
+  }
+  
+  @media (min-width: 48rem) {
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+  }
+}
+
+.trackNumber {
+  flex-shrink: 0;
+  width: 1.5rem;
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  
+  @media (min-width: 48rem) {
+    width: 2rem;
+    font-size: var(--font-size-sm);
+  }
+}
+
+.trackImage {
+  flex-shrink: 0;
+}
+
+.trackCover {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  
+  @media (min-width: 48rem) {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.trackPlaceholder {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.125rem dashed var(--color-border-light);
+  
+  @media (min-width: 48rem) {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.trackIcon {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.trackInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.trackName {
+  margin: 0 0 0.125rem 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-base);
+  }
+}
+
+.trackArtist {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-sm);
+  }
+}
+
+.trackAlbum {
+  display: none;
+  
+  @media (min-width: 48rem) {
+    display: block;
+    flex: 0 0 8rem;
+    min-width: 0;
+  }
+}
+
+.trackAlbum p {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-sm);
+  }
+}
+
+.trackDuration {
+  flex-shrink: 0;
+  width: 2.5rem;
+  text-align: right;
+  
+  @media (min-width: 48rem) {
+    width: 3rem;
+  }
+}
+
+.trackDuration p {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  
+  @media (min-width: 48rem) {
+    font-size: var(--font-size-sm);
+  }
+}
+
+.emptyTracks {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+.emptyTracks p {
+  margin: 0;
+  font-size: var(--font-size-base);
+}

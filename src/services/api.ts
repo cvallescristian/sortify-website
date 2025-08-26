@@ -159,4 +159,15 @@ export const apiService = {
     });
     return handleApiResponse(response);
   },
+
+  // Delete playlist
+  deletePlaylist: async (sessionId: string, playlistId: string) => {
+    const response = await fetch(`${API_BASE_URL}/playlist/${playlistId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${sessionId}`,
+      },
+    });
+    return handleApiResponse(response);
+  },
 };

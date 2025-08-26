@@ -110,6 +110,12 @@
   }
 }
 
+.playlistActions {
+  margin-top: var(--spacing-md);
+  display: flex;
+  justify-content: center;
+}
+
 .tracksList {
   display: flex;
   flex-direction: column;

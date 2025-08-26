@@ -2,14 +2,16 @@
 
 import { SpotifyPlaylist, SpotifyTrack } from '@/types/spotify';
 import BaseBlock from '@/components/base-block/BaseBlock';
+import DeleteButton from '@/components/delete-button/DeleteButton';
 import styles from './PlaylistDetails.module.scss';
 
 interface PlaylistDetailsProps {
   playlist: SpotifyPlaylist;
   tracks: SpotifyTrack[];
+  onDelete?: () => Promise<void>;
 }
 
-export default function PlaylistDetails({ playlist, tracks }: PlaylistDetailsProps) {
+export default function PlaylistDetails({ playlist, tracks, onDelete }: PlaylistDetailsProps) {
   const formatDuration = (ms: number) => {
     const minutes = Math.floor(ms / 60000);
     const seconds = Math.floor((ms % 60000) / 1000);
@@ -45,6 +47,11 @@ export default function PlaylistDetails({ playlist, tracks }: PlaylistDetailsPro
             </p>
             {playlist.description && (
               <p className={styles.playlistDescription}>{playlist.description}</p>
+            )}
+            {onDelete && (
+              <div className={styles.playlistActions}>
+                <DeleteButton onDelete={onDelete} />
+              </div>
             )}
           </div>
         </div>

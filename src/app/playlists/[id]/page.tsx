@@ -1,18 +1,38 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import BaseTemplate from '@/components/base-template/BaseTemplate';
 import { ProtectedRoute } from '@/components/protected-route/ProtectedRoute';
 import PlaylistDetails from './components/PlaylistDetails';
 import Loading from './components/Loading';
 import { usePlaylistDetails } from './hooks/usePlaylistDetails';
+import { apiService } from '@/services/api';
+import { sessionUtils } from '@/utils/session';
 import styles from './PlaylistDetailsPage.module.scss';
 
 export default function PlaylistDetailsPage() {
   const params = useParams();
+  const router = useRouter();
   const playlistId = params.id as string;
   const { playlist, tracks, loading, error } = usePlaylistDetails(playlistId);
+
+  const handleDeletePlaylist = async () => {
+    try {
+      const sessionId = sessionUtils.getSessionId();
+      if (!sessionId) {
+        throw new Error('No active session');
+      }
+
+      await apiService.deletePlaylist(sessionId, playlistId);
+      
+      // Redirect to playlists page after successful deletion
+      router.push('/playlists');
+    } catch (error) {
+      console.error('Error deleting playlist:', error);
+      throw error;
+    }
+  };
 
   const PlaylistContent = () => {
     if (loading) {
@@ -49,7 +69,11 @@ export default function PlaylistDetailsPage() {
 
     return (
       <BaseTemplate title={playlist.name} showBackButton>
-        <PlaylistDetails playlist={playlist} tracks={tracks} />
+        <PlaylistDetails 
+          playlist={playlist} 
+          tracks={tracks} 
+          onDelete={handleDeletePlaylist}
+        />
       </BaseTemplate>
     );
   };

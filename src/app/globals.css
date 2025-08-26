@@ -12,6 +12,8 @@
   --color-border-light: #dee2e6;
   --color-surface: #f8f9fa;
   --color-surface-hover: #e9ecef;
+  --color-background-hover: #f1f3f4;
+  --color-border-hover: #d1d5db;
   --color-error: #ff3b30;
   --color-shadow: rgba(0, 0, 0, 0.1);
   --color-shadow-primary: rgba(29, 185, 84, 0.3);

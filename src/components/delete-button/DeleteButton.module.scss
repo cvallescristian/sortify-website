@@ -1,0 +1,21 @@
+.deleteButton {
+  padding: 0.625rem 1.25rem;
+  border: 0.0625rem solid #dc2626;
+  background: transparent;
+  color: #dc2626;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: #dc2626;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

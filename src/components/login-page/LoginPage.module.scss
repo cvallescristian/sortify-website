@@ -3,14 +3,29 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: var(--color-background);
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.4)
+  ),
+  url('https://sotify-website.s3.ap-southeast-2.amazonaws.com/wallpaperflare.com_wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
   padding: var(--spacing-lg);
+  position: relative;
 }
 
 .loginContent {
   text-align: center;
   max-width: 25rem;
   width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--shadow-lg);
+  z-index: 1;
 }
 
 .loginTitle {
@@ -35,5 +50,27 @@
 
   .loginSubtitle {
     font-size: var(--font-size-xl);
+  }
+  
+  .loginContent {
+    padding: var(--spacing-3xl);
+  }
+}
+
+@media (max-width: 30rem) {
+  .loginPage {
+    padding: var(--spacing-md);
+  }
+  
+  .loginContent {
+    padding: var(--spacing-xl);
+  }
+  
+  .loginTitle {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .loginSubtitle {
+    font-size: var(--font-size-base);
   }
 }

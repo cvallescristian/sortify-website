@@ -1,6 +1,7 @@
 'use client';
 
 import { X } from 'lucide-react';
+import Button from '@/components/button/Button';
 import { SpotifyPlaylist } from '@/types/spotify';
 import styles from './SelectedPlaylists.module.scss';
 
@@ -55,13 +56,15 @@ export default function SelectedPlaylists({
                 {playlist.tracks.total} tracks
               </p>
             </div>
-            <button
+            <Button
               onClick={() => onRemovePlaylist(playlist.id)}
+              variant="secondary"
+              size="sm"
               className={styles.removeButton}
               aria-label={`Remove ${playlist.name}`}
             >
               <X size={16} />
-            </button>
+            </Button>
           </div>
         ))}
       </div>

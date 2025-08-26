@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Button from '@/components/button/Button';
 import { useSession } from '@/contexts/SessionContext';
 import { sessionValidationService } from '@/services/sessionValidation';
 import styles from './SessionBanner.module.scss';
@@ -64,19 +65,23 @@ export const SessionBanner: React.FC = () => {
 
         <div className={styles.actions}>
           {!sessionStatus.isExpired && (
-            <button 
-              className={`${styles.button} ${styles.primary}`}
+            <Button 
               onClick={handleRefresh}
+              variant="primary"
+              size="sm"
+              className={styles.button}
             >
               Refresh Session
-            </button>
+            </Button>
           )}
-          <button 
-            className={styles.button}
+          <Button 
             onClick={handleLogout}
+            variant="danger"
+            size="sm"
+            className={styles.button}
           >
             Logout
-          </button>
+          </Button>
         </div>
       </div>
     </div>

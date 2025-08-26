@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { Check } from 'lucide-react';
+import Button from '@/components/button/Button';
 import SpotifyLogo from '@/components/icons/SpotifyLogo';
 import styles from './NewReleaseSuccess.module.scss';
 
@@ -33,20 +34,22 @@ export default function NewReleaseSuccess({ playlistName, spotifyUrl }: NewRelea
         </p>
         
         <div className={styles.buttonGroup}>
-          <button
+          <Button
             onClick={handleOpenSpotify}
-            className={styles.spotifyButton}
+            variant="spotify"
+            size="md"
           >
             <SpotifyLogo className={styles.spotifyLogo} />
             Open in Spotify
-          </button>
+          </Button>
           
-          <button
+          <Button
             onClick={handleDone}
-            className={styles.doneButton}
+            variant="secondary"
+            size="md"
           >
             Done
-          </button>
+          </Button>
         </div>
       </div>
     </div>

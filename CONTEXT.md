@@ -4,6 +4,6 @@ There are some rules that you need to follow:
 - Include a global.scss that should contains standard variables. like colors, font's size and media sizes. 
 - DO NOT create files more than 100 lines of code. Try to modularize.
 - Try always to follow a design standard. Like button or block pattern. 
-- Reutilize component as most as you can. 
+- Try to create reusable components. Force the others components use that.
 - Try always to separate the logic with the rendering. 
 - Delete the unnecessary classname, or class that are not longer use it.

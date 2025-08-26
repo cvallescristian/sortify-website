@@ -1,3 +1,4 @@
+import Button from '@/components/button/Button';
 import { SpotifyUser } from '@/types/spotify';
 import UserProfile from './UserProfile';
 import styles from './AccountPage.module.scss';
@@ -15,12 +16,14 @@ export default function AccountPage({ user, onLogout }: AccountPageProps) {
         
         <UserProfile user={user} />
 
-        <button 
+        <Button 
           onClick={onLogout}
+          variant="danger"
+          size="md"
           className={styles.accountPage__logoutButton}
         >
           Logout
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import Button from '@/components/button/Button';
 import styles from './OverrideDialog.module.scss';
 
 interface OverrideDialogProps {
@@ -21,20 +22,23 @@ export default function OverrideDialog({
           A playlist named &quot;{playlistName}&quot; already exists. Would you like to override it with the new tracks?
         </p>
         <div className={styles.overrideButtons}>
-          <button
+          <Button
             onClick={onCancel}
-            className={styles.cancelButton}
+            variant="secondary"
+            size="md"
             disabled={isCreating}
           >
             Cancel
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={onOverride}
-            className={styles.overrideButton}
+            variant="primary"
+            size="md"
             disabled={isCreating}
+            loading={isCreating}
           >
             {isCreating ? "Overriding..." : "Override Playlist"}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

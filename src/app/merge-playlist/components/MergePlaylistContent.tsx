@@ -1,6 +1,7 @@
 'use client';
 
 import { SpotifyPlaylist } from '@/types/spotify';
+import Button from '@/components/button/Button';
 import PlaylistSearch from './PlaylistSearch';
 import SelectedPlaylists from './SelectedPlaylists';
 import PlaylistForm from './PlaylistForm';
@@ -67,13 +68,16 @@ export default function MergePlaylistContent({ playlists }: MergePlaylistContent
       )}
 
       <div className={styles.buttonContainer}>
-        <button
+        <Button
           onClick={createNewPlaylist}
-          className={styles.createButton}
-          disabled={selectedPlaylists.length === 0 || !newPlaylistName.trim() || isCreating}
+          variant="primary"
+          size="lg"
+          disabled={selectedPlaylists.length === 0 || !newPlaylistName.trim()}
+          loading={isCreating}
+          fullWidth
         >
           {isCreating ? 'Creating...' : 'Create New Playlist'}
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import PlaylistForm from "./PlaylistForm";
+import Button from "@/components/button/Button";
 import { useNewReleasePlaylist } from "../contexts/NewReleasePlaylistContext";
 import styles from "./PlaylistFormSection.module.scss";
 
@@ -26,13 +27,17 @@ export default function PlaylistFormSection() {
         onSaveToLibraryChange={setSaveToLibrary}
       />
 
-      <button
+      <Button
         onClick={handleCreateClick}
+        variant="primary"
+        size="lg"
+        disabled={selectedReleases.length === 0 || !newPlaylistName.trim()}
+        loading={isCreating}
+        fullWidth
         className={styles.createButton}
-        disabled={selectedReleases.length === 0 || !newPlaylistName.trim() || isCreating}
       >
         {isCreating ? "Creating..." : "Create New Release Playlist"}
-      </button>
+      </Button>
     </>
   );
 }
